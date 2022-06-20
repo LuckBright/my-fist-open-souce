@@ -1,10 +1,3 @@
-/*
- * @Author: zhangsheng@youlu.com
- * @Date: 2022-06-20 10:49:24
- * @Desc: Do not edit
- * @LastEditTime: 2022-06-20 15:26:26
- * @LastEditors: zhangsheng@youlu.com
- */
 import { defineComponent, ref, withModifiers } from 'vue'
 import inputDemo from './InputDemo.vue'
 
