@@ -3,5 +3,5 @@ import { ref } from 'vue'
 </script>
 
 <template>
-  <div>随便写一个</div>
+  <div class="text-3xl font-bold">随便写一个</div>
 </template>
