@@ -7,7 +7,7 @@
 -->
 <script setup lang="ts">
 import { ref } from 'vue'
-import Test from './test.tsx'
+import Test from './test'
 </script>
 
 <template>
@@ -18,4 +18,5 @@ import Test from './test.tsx'
       <h2 class="font-bold">我是通过title 插槽渲染的</h2>
     </template>
   </Test>
+  <SButton>我是按钮</SButton>
 </template>
