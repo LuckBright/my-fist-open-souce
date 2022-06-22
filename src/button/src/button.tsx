@@ -10,7 +10,11 @@ export default defineComponent({
 
     const prefixCls = getComponentCls('btn')
 
-    const classes = computed(() => [prefixCls, `${prefixCls}--${type.value}`])
+    const classes = computed(() => [
+      prefixCls,
+      `${prefixCls}--${type.value}`,
+      `${prefixCls}--${size.value}`
+    ])
 
     return () => {
       const { tag: Component } = props
