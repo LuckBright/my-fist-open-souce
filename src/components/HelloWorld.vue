@@ -8,6 +8,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import Test from './test'
+const buttonClick = () => {
+  console.log('按钮点击')
+}
 </script>
 
 <template>
@@ -18,5 +21,5 @@ import Test from './test'
       <h2 class="font-bold">我是通过title 插槽渲染的</h2>
     </template>
   </Test>
-  <SButton>我是按钮</SButton>
+  <SButton @click="buttonClick">我是按钮</SButton>
 </template>
