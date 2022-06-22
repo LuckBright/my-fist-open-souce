@@ -1,10 +1,3 @@
-<!--
- * @Author: zhangsheng@youlu.com
- * @Date: 2022-06-20 10:49:24
- * @Desc: Do not edit
- * @LastEditTime: 2022-06-20 15:27:15
- * @LastEditors: zhangsheng@youlu.com
--->
 <script setup lang="ts">
 import { ref } from 'vue'
 import Test from './test'
