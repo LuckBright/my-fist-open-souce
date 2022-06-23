@@ -14,5 +14,5 @@ const buttonClick = () => {
       <h2 class="font-bold">我是通过title 插槽渲染的</h2>
     </template>
   </Test>
-  <SButton size="small" @click="buttonClick">我是按钮</SButton>
+  <SButton size="small" disabled block @click="buttonClick"> 我是按钮 </SButton>
 </template>

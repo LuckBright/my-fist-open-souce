@@ -6,14 +6,15 @@ export default defineComponent({
   name: 'SButton',
   props: buttonProps,
   setup(props: ButtonProps, { slots }) {
-    const { type, size, disabled, loading } = toRefs(props)
+    const { type, size, disabled, loading, block } = toRefs(props)
 
     const prefixCls = getComponentCls('btn')
 
     const classes = computed(() => [
       prefixCls,
       `${prefixCls}--${type.value}`,
-      `${prefixCls}--${size.value}`
+      `${prefixCls}--${size.value}`,
+      `${block.value ? 's-btn--block' : ''}`
     ])
 
     return () => {
