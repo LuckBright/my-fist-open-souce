@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { defineConfig, build } = require('vite')
+const fs = require('fs')
 const path = require('path')
 const vue = require('@vitejs/plugin-vue')
 const vueJsx = require('@vitejs/plugin-vue-jsx')
@@ -15,6 +16,9 @@ const baseConfig = defineConfig({
 // 入口文件
 const entryFile = path.resolve(__dirname, './entry.ts')
 
+// 组件目录
+const componentsDir = path.resolve(__dirname, '../src')
+
 // 输出目录
 const outputDir = path.resolve(__dirname, '../build')
 
@@ -29,12 +33,12 @@ const rollupOptions = {
 }
 
 // 生成 package.json
-const createPackageJson = () => {
+const createPackageJson = name => {
   const fileStr = `{
-    "name": "sheep-ui",
+    "name": "${name ? name : 'sheep-ui'}",
     "version": "0.0.0",
-    "main": "sheep-ui.umd.js",
-    "module": "sheep-ui.es.js",
+    "main": "${name ? 'index' : 'sheep-ui'}.umd.js",
+    "module": "${name ? 'index' : 'sheep-ui'}.es.js",
     "author": "LuckBright",
     "github": "",
     "description": "my fist open souse",
@@ -48,8 +52,41 @@ const createPackageJson = () => {
       "url": "https://github.com/LuckBright/my-fist-open-souce/issues"
     }
   }`
+  if (name) {
+    // 按需导出 生成对应组件的目录以及对应的 package.json
+    fsExtra.outputFile(
+      path.resolve(outputDir, `${name}/package.json`),
+      fileStr,
+      'utf-8'
+    )
+  } else {
+    // 全量导出
+    fsExtra.outputFile(
+      path.resolve(outputDir, 'package.json'),
+      fileStr,
+      'utf-8'
+    )
+  }
+}
 
-  fsExtra.outputFile(path.resolve(outputDir, 'package.json'), fileStr, 'utf-8')
+// 单组件按需构建
+const buildSingle = async name => {
+  await build(
+    defineConfig({
+      ...baseConfig,
+      build: {
+        rollupOptions,
+        lib: {
+          entry: path.resolve(componentsDir, name),
+          name: 'index',
+          fileName: 'index',
+          formats: ['es', 'umd']
+        },
+        outDir: path.resolve(outputDir, name)
+      }
+    })
+  )
+  createPackageJson(name)
 }
 
 // 全量打包
@@ -73,7 +110,18 @@ const buildAll = async () => {
 
 const buildLib = async () => {
   await buildAll()
-
+  // 创建单组件包
+  // 获取组件名称组成的数组
+  fs.readdirSync(componentsDir)
+    .filter(name => {
+      // 过滤组件目录：只要目录不要文件，且目录中包含index.ts
+      const componentDir = path.resolve(componentsDir, name)
+      const isDir = fs.lstatSync(componentDir).isDirectory()
+      return isDir && fs.readdirSync(componentDir).includes('index.ts')
+    })
+    .forEach(async name => {
+      await buildSingle(name)
+    })
   // 创建 package.json
   createPackageJson()
 }

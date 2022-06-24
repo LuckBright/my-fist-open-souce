@@ -1,0 +1,18 @@
+{
+    "name": "button",
+    "version": "0.0.0",
+    "main": "index.umd.js",
+    "module": "index.es.js",
+    "author": "LuckBright",
+    "github": "",
+    "description": "my fist open souse",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/LuckBright/my-fist-open-souce.git"
+    },
+    "keywords": ["vue3", "组件库", "tsx", "UI"],
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/LuckBright/my-fist-open-souce/issues"
+    }
+  }
