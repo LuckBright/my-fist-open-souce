@@ -1,4 +1,4 @@
-import SButton from './button'
+import SButton from '../src/button'
 import { render } from '@testing-library/vue'
 
 // getByRole 获取生成的按钮实例

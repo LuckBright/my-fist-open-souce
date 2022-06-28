@@ -1,8 +1,27 @@
-import { getCurrentInstance } from 'vue'
+import { App, getCurrentInstance } from 'vue'
 
 const CLASS_PREFIX = 's'
 const GLOBAL_CONFIG_NAME = '_sheep'
 const COMPONENT_PREFIX = 'S'
+export interface SheepUIOptions {
+  classPrefix?: string
+  componentPrefix?: string
+}
+
+// 注入全局app属性
+export const setGlobalConfig = (
+  app: App,
+  options: SheepUIOptions = { classPrefix: CLASS_PREFIX }
+) => {
+  app.config.globalProperties[GLOBAL_CONFIG_NAME] = {
+    ...(app.config.globalProperties[GLOBAL_CONFIG_NAME] ?? {}),
+    classPrefix: options.classPrefix
+  }
+}
+
+// 获取组件name的prefix
+export const getComponentPrefix = (options?: SheepUIOptions): string =>
+  options?.componentPrefix ?? COMPONENT_PREFIX
 
 // 获取组件 class
 export const getComponentCls = (componentName?: string): string => {
