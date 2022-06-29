@@ -82,5 +82,7 @@ export async function onCreate(args = { type: '' }) {
       default:
         break
     }
-  } catch (error) {}
+  } catch (error) {
+    console.log(red('✖') + error.toString())
+  }
 }
