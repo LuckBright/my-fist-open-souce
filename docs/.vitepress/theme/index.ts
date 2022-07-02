@@ -6,13 +6,18 @@ import 'vitepress-theme-demoblock/theme/styles/index.css'
 import DemoBlock from 'vitepress-theme-demoblock/components/DemoBlock.vue'
 import Demo from 'vitepress-theme-demoblock/components/Demo.vue'
 
+import type { App } from 'vue'
+import FistSouse from '../../../src/index'
+
 export default {
   ...Theme,
   // 扩展应用实例
-  enhanceApp({ app }) {
+  enhanceApp({ app }:{ app: App<never> }) {
+    console.log(app)
     app.component('InputDemo', InputDemo)
     app.component('Test', Test)
     app.component('DemoBlock', DemoBlock)
     app.component('Demo', Demo)
+    app.use(FistSouse)
   }
 }

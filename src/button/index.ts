@@ -9,6 +9,7 @@ export { Button }
 // 导出插件
 export default {
   install(app: App, options?: SheepUIOptions) {
+    console.log(app)
     installComponent(app, Button, options)
   }
 }

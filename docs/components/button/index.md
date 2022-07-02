@@ -2,7 +2,12 @@
 :::demo 这是组件引用的demo
   ```vue
     <template>
-      <InputDemo></InputDemo>
+      <s-button @click="buttonClick"></s-button>
     </template>
+    <script setup>
+      const buttonClick = () => {
+        console.log('执行了')
+      }
+    </script>
   ```
 :::

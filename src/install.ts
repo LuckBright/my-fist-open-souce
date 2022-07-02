@@ -13,10 +13,10 @@ export function installComponent(
   options?: SheepUIOptions
 ) {
   const componentPrefix = getComponentPrefix(options)
-  const registered = app.component(componentPrefix + component.name)
-
+  const registered = app.component(component.name)
+  console.log(componentPrefix + component.name, component)
   if (!registered) {
     setGlobalConfig(app, options)
-    app.component(componentPrefix + component.name)
+    app.component(component.name, component)
   }
 }
