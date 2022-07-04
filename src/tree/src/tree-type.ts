@@ -1,6 +1,6 @@
 import { ExtractPropTypes, PropType } from 'vue'
 
-interface ITreeNode {
+export interface ITreeNode {
   label: string
   id?: string
   children?: ITreeNode[]
@@ -19,7 +19,11 @@ export interface IInnerTreeNode extends ITreeNode {
   level: number // 父节点层级
   isLeaf?: boolean // 是否叶子节点
 }
-
-export const treeProps = {} as const
+export const treeProps = {
+  data: {
+    type: Object as PropType<Array<ITreeNode>>,
+    required: true
+  }
+} as const
 
 export type TreeProps = ExtractPropTypes<typeof treeProps>

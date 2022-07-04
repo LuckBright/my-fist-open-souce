@@ -1,20 +1,57 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Test from './test'
-const buttonClick = () => {
-  console.log('按钮点击')
-}
+const data = ref([
+  {
+    label: 'docs',
+    id: 'docs'
+  },
+  {
+    label: 'packages',
+    id: 'packages',
+    expanded: true,
+    children: [
+      {
+        label: 'plugin-vue',
+        id: 'plugin-vue'
+      },
+      {
+        label: 'vite',
+        id: 'vite',
+        expanded: true,
+        children: [
+          {
+            label: 'src',
+            id: 'src'
+          },
+          {
+            label: 'README.md',
+            id: 'README.md'
+          }
+        ]
+      }
+    ]
+  },
+  {
+    label: 'scripts',
+    id: 'scripts',
+    children: [
+      {
+        label: 'release.ts',
+        id: 'release.ts'
+      },
+      {
+        label: 'verifyCommit.ts',
+        id: 'verifyCommit.ts'
+      }
+    ]
+  },
+  {
+    label: 'pnpm-workspace.yaml',
+    id: 'pnpm-workspace.yaml'
+  }
+])
 </script>
 
 <template>
-  <div class="text-3xl font-bold">随便写一个</div>
-  <Test>
-    我是通过slot渲染的
-    <template #title>
-      <h2 class="font-bold">我是通过title 插槽渲染的</h2>
-    </template>
-  </Test>
-  <SButton type="text" size="small" block @click="buttonClick">
-    我是按钮
-  </SButton>
+  <STree :data="data"></STree>
 </template>

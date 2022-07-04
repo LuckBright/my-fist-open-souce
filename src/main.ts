@@ -3,6 +3,6 @@ import App from './App.vue'
 
 import './index.scss'
 // import Button from './button'
-import SheepUi from '../build/'
+import FistSouse from './index'
 
-createApp(App).use(SheepUi).mount('#app')
+createApp(App).use(FistSouse).mount('#app')

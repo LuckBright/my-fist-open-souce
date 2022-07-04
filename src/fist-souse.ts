@@ -6,7 +6,6 @@ import * as components from './components'
 const FistSouse = {
   install(app: App) {
     Object.keys(components).forEach(key => {
-      console.log(components[key as keyof typeof components] as Plugin)
       app.use(components[key as keyof typeof components] as Plugin)
     })
   }

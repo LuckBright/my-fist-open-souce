@@ -2,7 +2,7 @@ import { upperFist } from "./utils"
 
 // 创建组件核心文件模板
 export default function genCoreTemplate (name: string) {
-  const compName = 'S' + upperFist(name)
+  const compName = upperFist(name)
   const propsTypeName = upperFist(name) + 'Props'
   const propsName = name + 'Props'
   const className = 's-' + name

@@ -27,6 +27,18 @@ const buttonProps = {
 };
 const CLASS_PREFIX = "s";
 const GLOBAL_CONFIG_NAME = "_sheep";
+const COMPONENT_PREFIX = "S";
+const setGlobalConfig = (app, options = { classPrefix: CLASS_PREFIX }) => {
+  var _a;
+  app.config.globalProperties[GLOBAL_CONFIG_NAME] = {
+    ...(_a = app.config.globalProperties[GLOBAL_CONFIG_NAME]) != null ? _a : {},
+    classPrefix: options.classPrefix
+  };
+};
+const getComponentPrefix = (options) => {
+  var _a;
+  return (_a = options == null ? void 0 : options.componentPrefix) != null ? _a : COMPONENT_PREFIX;
+};
 const getComponentCls = (componentName) => {
   var _a, _b;
   const instance = getCurrentInstance();
@@ -40,7 +52,7 @@ function _isSlot(s) {
   return typeof s === "function" || Object.prototype.toString.call(s) === "[object Object]" && !isVNode(s);
 }
 var Button = defineComponent({
-  name: "SButton",
+  name: "Button",
   props: buttonProps,
   setup(props, {
     slots
@@ -68,9 +80,17 @@ var Button = defineComponent({
     };
   }
 });
+function installComponent(app, component, options) {
+  const componentPrefix = getComponentPrefix(options);
+  const registered = app.component(componentPrefix + component.name);
+  if (!registered) {
+    setGlobalConfig(app, options);
+    app.component(componentPrefix + component.name, component);
+  }
+}
 var index = {
-  install(app) {
-    app.component(Button.name, Button);
+  install(app, options) {
+    installComponent(app, Button, options);
   }
 };
 export { Button, index as default };
