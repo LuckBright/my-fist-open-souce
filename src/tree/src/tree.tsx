@@ -6,7 +6,14 @@ export default defineComponent({
   props: treeProps,
   setup(props: TreeProps) {
     const { data } = toRefs(props)
-    const { expandedTree, toggleNode } = useTree(data)
+
+    // 节点宽度
+    const NODE_INDENT = 24
+
+    // 节点高度
+    const NODE_HEIGHT = 28
+
+    const { expandedTree, toggleNode, getChildren } = useTree(data)
     return () => {
       return (
         <div class="s-tree">
@@ -14,11 +21,22 @@ export default defineComponent({
             const { level, isLeaf, expanded } = treeNode
             return (
               <div
-                class="s-tree-node hover:bg-slate-300"
+                class="s-tree-node hover:bg-slate-300 relative leading-7"
                 style={{
-                  paddingLeft: `${24 * (level - 1)}px`
+                  paddingLeft: `${NODE_INDENT * (level - 1)}px`
                 }}
               >
+                {/** 连接线 */}
+                {!isLeaf && expanded && (
+                  <span
+                    class="s-tree-node__vline absolute w-px bg-slate-300"
+                    style={{
+                      height: `${NODE_HEIGHT * getChildren(treeNode).length}px`,
+                      left: `${NODE_INDENT * (level - 1) + 8}px`,
+                      top: `${NODE_HEIGHT}px`
+                    }}
+                  ></span>
+                )}
                 {/** 折叠图标 */}
                 {/** 判断当前节点是否为叶子节点 */}
                 {isLeaf ? (
