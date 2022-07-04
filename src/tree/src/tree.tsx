@@ -2,7 +2,7 @@ import { defineComponent, toRefs } from 'vue'
 import { useTree } from './componsables/use-tree'
 import { treeProps, TreeProps } from './tree-type'
 export default defineComponent({
-  name: 'STree',
+  name: 'Tree',
   props: treeProps,
   setup(props: TreeProps) {
     const { data } = toRefs(props)
