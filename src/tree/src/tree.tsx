@@ -5,7 +5,7 @@ export default defineComponent({
   name: 'Tree',
   props: treeProps,
   setup(props: TreeProps) {
-    const { data } = toRefs(props)
+    const { data, checkable } = toRefs(props)
 
     // 节点宽度
     const NODE_INDENT = 24
@@ -13,7 +13,8 @@ export default defineComponent({
     // 节点高度
     const NODE_HEIGHT = 28
 
-    const { expandedTree, toggleNode, getChildren } = useTree(data)
+    const { expandedTree, toggleNode, getChildrenExpanded, toggleCheckNode } =
+      useTree(data)
     return () => {
       return (
         <div class="s-tree">
@@ -21,7 +22,7 @@ export default defineComponent({
             const { level, isLeaf, expanded } = treeNode
             return (
               <div
-                class="s-tree-node hover:bg-slate-300 relative leading-7"
+                class="s-tree-node hover:bg-slate-300 relative leading-7 flex items-center"
                 style={{
                   paddingLeft: `${NODE_INDENT * (level - 1)}px`
                 }}
@@ -31,7 +32,9 @@ export default defineComponent({
                   <span
                     class="s-tree-node__vline absolute w-px bg-slate-300"
                     style={{
-                      height: `${NODE_HEIGHT * getChildren(treeNode).length}px`,
+                      height: `${
+                        NODE_HEIGHT * getChildrenExpanded(treeNode).length
+                      }px`,
                       left: `${NODE_INDENT * (level - 1) + 8}px`,
                       top: `${NODE_HEIGHT}px`
                     }}
@@ -60,6 +63,15 @@ export default defineComponent({
                       d="M384 192v640l384-320.064z"
                     ></path>
                   </svg>
+                )}
+                {/** 复选框 */}
+                {checkable.value && (
+                  <input
+                    type="checkbox"
+                    style={{ marginRight: '8px' }}
+                    v-model={treeNode.checked}
+                    onClick={() => toggleCheckNode(treeNode)}
+                  ></input>
                 )}
                 {/** 标签 */}
                 {treeNode.label}

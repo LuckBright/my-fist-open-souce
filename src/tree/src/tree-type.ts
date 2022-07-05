@@ -24,6 +24,10 @@ export const treeProps = {
   data: {
     type: Object as PropType<Array<ITreeNode>>,
     required: true
+  },
+  checkable: {
+    type: Boolean,
+    default: false
   }
 } as const
 
