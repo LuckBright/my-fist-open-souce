@@ -25,7 +25,13 @@ export const treeProps = {
     type: Object as PropType<Array<ITreeNode>>,
     required: true
   },
+  // 是否显示 checkbox
   checkable: {
+    type: Boolean,
+    default: false
+  },
+  // 是否显示参考线
+  lineable: {
     type: Boolean,
     default: false
   }

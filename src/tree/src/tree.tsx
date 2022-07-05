@@ -4,8 +4,8 @@ import { treeProps, TreeProps } from './tree-type'
 export default defineComponent({
   name: 'Tree',
   props: treeProps,
-  setup(props: TreeProps) {
-    const { data, checkable } = toRefs(props)
+  setup(props: TreeProps, { slots }) {
+    const { data, checkable, lineable } = toRefs(props)
 
     // 节点宽度
     const NODE_INDENT = 24
@@ -28,9 +28,9 @@ export default defineComponent({
                 }}
               >
                 {/** 连接线 */}
-                {!isLeaf && expanded && (
+                {!isLeaf && expanded && lineable && (
                   <span
-                    class="s-tree-node__vline absolute w-px bg-slate-300"
+                    class="s-tree-node__vine absolute w-px bg-slate-300"
                     style={{
                       height: `${
                         NODE_HEIGHT * getChildrenExpanded(treeNode).length
@@ -46,6 +46,8 @@ export default defineComponent({
                   <span
                     style={{ display: 'inline-block', width: '25px' }}
                   ></span>
+                ) : slots.icon ? (
+                  slots.icon({ nodeData: treeNode, toggleNode })
                 ) : (
                   <svg
                     onClick={() => toggleNode(treeNode)}
@@ -74,7 +76,7 @@ export default defineComponent({
                   ></input>
                 )}
                 {/** 标签 */}
-                {treeNode.label}
+                {slots.content ? slots.content(treeNode) : treeNode.label}
               </div>
             )
           })}
