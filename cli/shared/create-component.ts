@@ -13,7 +13,7 @@ export interface ComponentMeta {
   category: string
 }
 
-const WRITE_FILE_OPTIONS = 'utf-8'
+const WRITE_FILE_OPTIONS = { encoding: 'utf-8' } as const
 
 export default function createComponent(meta: ComponentMeta) {
   const { name } = meta
