@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- <title>-mockplus-</title> -->
+    <g id="00-通用组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="00-01-组件-按钮" transform="translate(-537.000000, -471.000000)" fill="#6D71F9">
+            <g id="-mockplus-" transform="translate(500.000000, 462.000000)">
+                <g id="-mockplus-" transform="translate(37.000000, 9.000000)">
+                    <g id="颜色" transform="translate(0.000000, 0.000000)">
+                        <circle id="08" opacity="0.300000012" cx="10.959798" cy="3.04020203" r="1.4"></circle>
+                        <circle id="07" opacity="0.400000006" cx="12.6" cy="7" r="1.4"></circle>
+                        <circle id="06" opacity="0.5" cx="10.959798" cy="10.959798" r="1.4"></circle>
+                        <circle id="05" opacity="0.600000024" cx="7" cy="12.6" r="1.4"></circle>
+                        <circle id="04" opacity="0.699999988" cx="3.04020203" cy="10.959798" r="1.4"></circle>
+                        <circle id="03" opacity="0.800000012" cx="1.4" cy="7" r="1.4"></circle>
+                        <circle id="02" opacity="0.900000036" cx="3.04020203" cy="3.04020203" r="1.4"></circle>
+                        <circle id="01" cx="7" cy="1.4" r="1.4"></circle>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

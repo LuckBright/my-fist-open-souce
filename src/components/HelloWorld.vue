@@ -53,5 +53,5 @@ const data = ref([
 </script>
 
 <template>
-  <STree :data="data"></STree>
+  <s-icon icon-class="loading"></s-icon>
 </template>

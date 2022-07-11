@@ -4,7 +4,8 @@ const sidebar = {
     {
       text: '通用',
       items: [
-        { text: 'Button 按钮', link: '/components/button/' }
+        { text: 'Button 按钮', link: '/components/button/' },
+        { text: 'Icon 图标', link: '/components/icon/' }
       ]
     },
     { text: '导航', items: [] },
