@@ -1,13 +1,13 @@
 # 按钮 button
-:::demo 这是组件引用的demo
+:::demo 
   ```vue
     <template>
-      <s-button @click="buttonClick"></s-button>
+      <div>
+        <s-button>默认</s-button>
+        <s-button type="primary">主要</s-button>
+        <s-button type="text">文字</s-button>
+        <s-button type="warning">警告</s-button>
+      </div>
     </template>
-    <script setup>
-      const buttonClick = () => {
-        console.log('执行了')
-      }
-    </script>
   ```
 :::
