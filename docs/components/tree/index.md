@@ -2,7 +2,7 @@
 :::demo this is a tree
   ```vue
     <template>
-      <STree :data="data"></STree>
+      <STree :data="data" id="tree1"></STree>
     </template>
     <script setup>
       import { ref } from 'vue'
@@ -65,7 +65,7 @@
 :::demo 🌲 勾选功能
   ```vue
     <template>
-      <STree :data="data" checkable></STree>
+      <STree :data="data" id="tree2" checkable></STree>
     </template>
     <script setup>
       import { ref } from 'vue'
@@ -135,7 +135,7 @@
 :::demo this is a tree
   ```vue
     <template>
-      <STree :data="data">
+      <STree :data="data" id="tree3">
         <template #icon="{ nodeData, toggleNode }">
           <span v-if="nodeData.isLeaf" class="devui-tree-node__indent"></span>
           <span v-else @click="(event) => {
