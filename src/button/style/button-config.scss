@@ -7,10 +7,26 @@ $type: (
     color: $s-light-text,
     background-color: $s-primary
   ),
+  warning: (
+    color: $s-light-text,
+    background-color: $s-warning
+  ),
   secondary: (
     color: $s-text,
     background-color: $s-block,
     border-color: $s-line
+  ),
+  success: (
+    color: $s-light-text,
+    background-color: $s-success
+  ),
+  danger: (
+    color: $s-light-text,
+    background-color: $s-danger
+  ),
+  info: (
+    color: $s-text,
+    background-color: $s-info
   ),
   text: (
     padding: 0,
@@ -33,6 +49,70 @@ $pseudo: (
     disabled: (
       color: $s-light-text,
       background-color: $s-primary-disabled,
+      border: none
+    )
+  ),
+  warning: (
+    hover: (
+      background-color: $s-warning-hover
+    ),
+    focus: (
+      background-color: $s-warning-hover
+    ),
+    active: (
+      background-color: $s-warning-hover
+    ),
+    disabled: (
+      color: $s-light-text,
+      background-color: $s-warning,
+      border: none
+    )
+  ),
+  success: (
+    hover: (
+      background-color: $s-success-hover
+    ),
+    focus: (
+      background-color: $s-success-hover
+    ),
+    active: (
+      background-color: $s-success-active
+    ),
+    disabled: (
+      color: $s-light-text,
+      background-color: $s-success,
+      border: none
+    )
+  ),
+  danger: (
+    hover: (
+      background-color: $s-danger-hover
+    ),
+    focus: (
+      background-color: $s-danger-hover
+    ),
+    active: (
+      background-color: $s-danger-active
+    ),
+    disabled: (
+      color: $s-light-text,
+      background-color: $s-danger,
+      border: none
+    )
+  ),
+  info: (
+    hover: (
+      background-color: $s-info-hover
+    ),
+    focus: (
+      background-color: $s-info-hover
+    ),
+    active: (
+      background-color: $s-info-active
+    ),
+    disabled: (
+      color: $s-text,
+      background-color: $s-info,
       border: none
     )
   ),
