@@ -23,6 +23,10 @@ export const buttonProps = {
     type: Boolean,
     default: false
   },
+  plain: {
+    type: Boolean,
+    default: false
+  },
   loading: {
     type: Boolean,
     default: false

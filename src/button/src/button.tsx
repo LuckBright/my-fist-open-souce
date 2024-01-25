@@ -6,7 +6,7 @@ export default defineComponent({
   name: 'Button',
   props: buttonProps,
   setup(props: ButtonProps, { slots }) {
-    const { type, size, disabled, block } = toRefs(props)
+    const { type, size, disabled, block, plain } = toRefs(props)
 
     const prefixCls = getComponentCls('btn')
 
@@ -14,7 +14,8 @@ export default defineComponent({
       prefixCls,
       `${prefixCls}--${type.value}`,
       `${prefixCls}--${size.value}`,
-      `${block.value ? 's-btn--block' : ''}`
+      `${block.value ? 's-btn--block' : ''}`,
+      `${plain.value ? 's-btn--plain' : ''}`
     ])
 
     return () => {

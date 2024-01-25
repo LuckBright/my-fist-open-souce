@@ -31,6 +31,10 @@ $type: (
   text: (
     padding: 0,
     color: $s-brand-active
+  ),
+  plain: (
+    color: $s-text,
+    background-color: $s-block,
   )
 );
 
